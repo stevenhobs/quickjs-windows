@@ -1,0 +1,6 @@
+[submodule "quickjs"]
+	path = quickjs
+	url = https://github.com/bellard/quickjs
+[submodule "dlfcn-win32"]
+	path = dlfcn-win32
+	url = https://github.com/dlfcn-win32/dlfcn-win32

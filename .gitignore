@@ -1,0 +1,5 @@
+# dir
+.vscode/
+.idea/
+build/
+install/
