@@ -4,7 +4,7 @@ This project is to build **qjs.exe** and **qjsc.exe** on Windows.
 
 ## Feature
 
-- CMake build tool and mingw64 toolchain are enough. Do not need Msys2 environment.
+- CMake with ninja-build tool and mingw64 toolchain are enough. Do not need Msys2 environment.
 - Both support shared and static lib build.
 - qjsc.exe with MinGW toolchain. You can also use C module for your qjs exe.
 
@@ -14,12 +14,13 @@ This project is to build **qjs.exe** and **qjsc.exe** on Windows.
 
 1. Install tools
 
-- CMake > 3.6.0
-- mingw64 gcc > 8.1.0
+- mingw64 gcc > 8.1.0 <https://github.com/niXman/mingw-builds-binaries/releases>
+- CMake > 3.6.0 <https://github.com/Kitware/CMake/releases>
+- Ninja > 1.10.0 <https://github.com/ninja-build/ninja/releases>
 
-  > Ensure you have the **make.exe** or **ninja.exe** tool in the PATH enviroment
+  > Ensure these bin-folders in the **PATH** environment variety.
 
-2. Clone this repo
+2. Clone this repo  `git clone --depth=1 https://github.com/stevenhobs/quickjs-windows.git`
 3. Open the terminal from the repo position
 4. build commands
 
@@ -28,23 +29,25 @@ This project is to build **qjs.exe** and **qjsc.exe** on Windows.
 
    # check cmake tool
    where.exe cmake
+   # check ninja
+   where.exe ninja
    # check gcc
    where.exe gcc
 
    # pull required repositories
-   git submodule update --depth 1
+   git submodule update --init --depth=1
 
    # modify configuration about qjs
    notepad CMakeLists.txt
 
    # generate cmake build cache
    cmake -B build -DCC=gcc -G Ninja
-   # If you use Make tool, use this:
-   # cmake -B build -DCC=gcc -G "Unix Makefiles"
-   cmake --build build -DCMAKE_BUILD_TYPE=Release
 
-   # install
-   cmake install build
+   # build targets
+   cmake --build build -v
+
+   # install targets
+   cmake --install build
    ```
 
 5. copy the target lib and exe files
